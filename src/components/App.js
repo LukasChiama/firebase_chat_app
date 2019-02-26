@@ -13,10 +13,10 @@ const App = () => (
     <div>
       <Navigation />
       <Route exact path="/home" component={Home} />
-      <Route exact path="/landing" component={Landing} />
-      <Route exact path="/signin" component={SignIn} />
-      <Route exact path="/signup" component={SignUp} />
-      <Route exact path="/passwordForgot" component={PasswordForgot} />
+      <Route path="/landing" component={Landing} />
+      <Route path="/signin" component={SignIn} />
+      <Route path="/signup" component={SignUp} />
+      <Route path="/passwordForgot" component={PasswordForgot} />
     </div>
   </Router>
 
