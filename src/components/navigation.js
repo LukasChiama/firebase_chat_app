@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import SignOut from "./signout";
 import { AuthUserContext } from "./session";
 
-const Navigation = ({ authUser }) => (
+const Navigation = () => (
   <div>
     <AuthUserContext.Consumer>
       {authUser => authUser ? <NavigationAuth /> : <NavigationNotAuth />}
@@ -19,6 +19,9 @@ const NavigationAuth = () => (
       </li>
       <li>
         <Link to="/home">Home</Link>
+      </li>
+      <li>
+        <Link to="/account">Account</Link>
       </li>
       <li>
         <SignOut />

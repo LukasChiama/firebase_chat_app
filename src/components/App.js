@@ -7,6 +7,7 @@ import Home from "./home";
 import Landing from "./landing";
 import SignIn from "./signin";
 import SignUp from "./signup";
+import Account from "./account";
 import PasswordForgot from "./passwordForgot";
 
 class App extends React.Component {
@@ -35,6 +36,7 @@ class App extends React.Component {
             <hr />
             <Route exact path="/" component={Landing} />
             <Route exact path="/home" component={Home} />
+            <Route exact path="/account" component={Account} />
             <Route exact path="/signin" component={SignIn} />
             <Route exact path="/signup" component={SignUp} />
             <Route exact path="/passwordForgot" component={PasswordForgot} />

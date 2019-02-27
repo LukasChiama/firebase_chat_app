@@ -2,12 +2,14 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import { withFirebase } from "./firebase";
 import { SignUpLink } from "./signup";
+import { PasswordForgotLink } from "./passwordForgot";
 
 const SignIn = () => (
   <div>
     <h1>Sign In</h1>
     <SignInForm />
     <SignUpLink />
+    <PasswordForgotLink />
   </div>
 );
 
