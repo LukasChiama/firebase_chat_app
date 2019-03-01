@@ -2,11 +2,10 @@ import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import { withFirebase } from "./firebase";
 
-
 const SignUp = () => (
   <div>
     <h1>Sign up</h1>
-      <SignUpForm />
+    <SignUpForm />
   </div>
 );
 
@@ -28,12 +27,19 @@ class Form extends React.Component {
   };
 
   handleSubmit = e => {
-    const { email, password1 } = this.state;
+    const { username, email, password1 } = this.state;
     this.props.firebase
       .createUser(email, password1)
       .then(authUser => {
+        return this.props.firebase.user(authUser.user.uid)
+        .set({
+          username,
+          email
+        })
+      })
+      .then(() => {
         this.setState({ ...userDetails });
-        this.props.history.push("/home")
+        this.props.history.push("/home");
       })
       .catch(error => {
         this.setState({ error });
@@ -108,7 +114,7 @@ const SignUpLink = () => (
   </p>
 );
 
-const SignUpForm = withRouter(withFirebase(Form))
+const SignUpForm = withRouter(withFirebase(Form));
 
 export default SignUp;
 
