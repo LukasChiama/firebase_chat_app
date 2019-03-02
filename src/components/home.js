@@ -42,9 +42,9 @@ class MessageBase extends Component {
   };
 
   createMessage = (e, authUser) => {
-    this.props.firebase.message().push({
+    this.props.firebase.messages().push({
      text: this.state.text,
-     userId: authUser.id
+     userId: authUser.uid
     })
     this.setState({ text : "" });
     e.preventDefault();
@@ -52,20 +52,6 @@ class MessageBase extends Component {
 
   render() {
     const { loading, text, messages } = this.state;
-
-    const MessageList = ({ messages }) => (
-      <ul>
-        {messages.map(item => (
-          <MessageItem key={item.uid} message={item} />
-        ))}
-      </ul>
-    );
-
-    const MessageItem = ({ message }) => (
-      <li>
-        <strong>{message.uid}</strong> {message.text}
-      </li>
-    );
 
     return (
       <AuthUserContext.Consumer>
@@ -94,6 +80,21 @@ class MessageBase extends Component {
     );
   }
 }
+
+const MessageList = ({ messages }) => (
+  <ul>
+    {messages.map(item => (
+      <MessageItem key={item.uid} message={item} />
+    ))}
+  </ul>
+);
+
+const MessageItem = ({ message }) => (
+  <li>
+    <strong>{message.uid}</strong> {message.text}
+  </li>
+);
+
 
 const Messages = withFirebase(MessageBase);
 const condition = authUser => !!authUser;
